@@ -29,4 +29,4 @@ jobs:
         RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
         WORKSPACE_NAME: ${{ secrets.WORKSPACE }}
       run: |
-        python scoring/aci_deploy.py
+        python scoring/aci_deploy.py 
