@@ -3,6 +3,7 @@ from azureml.core.webservice import AciWebservice
 from azureml.core.model import Model
 from azureml.core import Workspace
 from azureml.core.environment import Environment
+import os
 env = Environment.from_conda_specification(name="service-env", file_path="scoring/scoring/env.yaml")
 
 model_inference_config = InferenceConfig(source_directory="scoring/scoring",
