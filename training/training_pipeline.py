@@ -1,3 +1,4 @@
+import os
 from azureml.data import OutputFileDatasetConfig
 from azureml.pipeline.steps import PythonScriptStep
 from azureml.pipeline.core import Pipeline
@@ -8,7 +9,10 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(pyth
                                                                             pip_packages=["numpy", "pandas",
                                                                                           "scikit-learn", "azureml-core",
                                                                                           "azureml-defaults", "azureml-pipeline"])
-ws = Workspace.from_config()
+ws = Workspace.get(name=os.environ["WORKSPACE_NAME"],
+               subscription_id=os.environ["SUBSCRIPTION_ID"],
+               resource_group=os.environ["RESOURCE_GROUP"])
+
 train_prepped_data = OutputFileDatasetConfig("train_prepped")
 test_prepped_data = OutputFileDatasetConfig("test_prepped")
 
