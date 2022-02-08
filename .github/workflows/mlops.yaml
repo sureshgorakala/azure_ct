@@ -30,9 +30,7 @@ jobs:
         WORKSPACE_NAME: ${{ secrets.WORKSPACE }}
       run: |
         python training/training_pipeline.py
-  score:
-    runs-on: ubuntu-latest
-    steps:
+
     - name: Deploy Scoring
       id: run_scoring
       env:
