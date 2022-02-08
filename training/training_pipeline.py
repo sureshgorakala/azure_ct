@@ -33,7 +33,7 @@ step2 = PythonScriptStep(name="train-model",
                         arguments=["--train-data", train_prepped_data.as_input(),
                                    "--test-data", test_prepped_data.as_input()],
                         runconfig=run_config)
-
+print(os.curdir)
 pipeline_steps = Pipeline(workspace=ws, steps=[step1, step2])
 experiment = Experiment(name="wine-quality-training", workspace=ws)
 run = experiment.submit(pipeline_steps)
