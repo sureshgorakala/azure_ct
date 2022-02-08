@@ -12,7 +12,8 @@ model_inference_config.validate_configuration()
 
 ws = Workspace.get(name=os.environ["WORKSPACE_NAME"],
                subscription_id=os.environ["SUBSCRIPTION_ID"],
-               resource_group=os.environ["RESOURCE_GROUP"])aci_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
+               resource_group=os.environ["RESOURCE_GROUP"])
+aci_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)
 aci_config.validate_configuration()
 
 model2 = Model(ws, name="wine-quality-lr")
