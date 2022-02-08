@@ -17,7 +17,7 @@ train_prepped_data = OutputFileDatasetConfig("train_prepped")
 test_prepped_data = OutputFileDatasetConfig("test_prepped")
 
 step1 = PythonScriptStep(name="prepare-data",
-                         source_directory="training_pipeline",
+                         source_directory="training/training_pipeline",
                          script_name="prep.py",
                          compute_target="aml-cluster",
                          arguments = ["--train-ds-name", "wine-quality-train",
@@ -27,13 +27,12 @@ step1 = PythonScriptStep(name="prepare-data",
                         runconfig=run_config,
                         allow_reuse=False)
 step2 = PythonScriptStep(name="train-model",
-                        source_directory="training_pipeline", 
+                        source_directory="training/training_pipeline", 
                         script_name="train.py",
                         compute_target="aml-cluster",
                         arguments=["--train-data", train_prepped_data.as_input(),
                                    "--test-data", test_prepped_data.as_input()],
                         runconfig=run_config)
-print(os.curdir)
 pipeline_steps = Pipeline(workspace=ws, steps=[step1, step2])
 experiment = Experiment(name="wine-quality-training", workspace=ws)
 run = experiment.submit(pipeline_steps)
