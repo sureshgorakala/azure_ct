@@ -5,7 +5,7 @@ from azureml.core import Workspace
 from azureml.core.environment import Environment
 env = Environment.from_conda_specification(name="service-env", file_path="env.yaml")
 
-model_inference_config = InferenceConfig(source_directory="scoring",
+model_inference_config = InferenceConfig(source_directory="scoring/scoring",
                                         entry_script="scoring.py",
                                         environment=env)
 model_inference_config.validate_configuration()
