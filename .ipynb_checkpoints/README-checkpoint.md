@@ -20,9 +20,3 @@ Jobs Events:
        register model
     7.run deploying step: deploys model using ACI process
     8. Scoring file to score new data
-
-
-    ---- to login to azure subcription, there are two ways:
-    1. use service principle method (recommended)
-    2. create secrets in settings of the repository for subscription/resourcegroup/workspace; while exectuting we need to login manually
-
