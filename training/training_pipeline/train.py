@@ -45,7 +45,7 @@ def train():
     train_pred = lr.predict(df_train[FEATURES])
     train_pred_class = np.where(train_pred>0.5, 1,0)
     accuracy = accuracy_score(df_train[LABEL], train_pred_class)
-    recall = recall_score(df_train[LABEL], train_pred_class,average='None')
+    recall = recall_score(df_train[LABEL], train_pred_class,average=None)
     precision = precision_score(df_train[LABEL], train_pred_class)
     train_metrics = {"accurracy": accuracy,
                      "recall":recall,
@@ -55,7 +55,7 @@ def train():
     test_pred = lr.predict(df_test[FEATURES])
     test_pred_class = np.where(test_pred>0.5, 1,0)
     accuracy = accuracy_score(df_test[LABEL], test_pred_class)
-    recall = recall_score(df_test[LABEL], test_pred_class,average='None')
+    recall = recall_score(df_test[LABEL], test_pred_class,average=None)
     precision = precision_score(df_test[LABEL], test_pred_class)
     test_metrics = {"accurracy": accuracy,
                      "recall":recall,
