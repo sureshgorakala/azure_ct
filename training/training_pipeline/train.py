@@ -36,8 +36,9 @@ def create_dataframe(path):
     
 def train():
     df_train = create_dataframe(args.train_data)
+    df_train=df_train.fillna(0)
     df_test = create_dataframe(args.test_data)
-
+    df_test = df_test.fillna(0)
     lr = LogisticRegression()
     
     lr.fit(df_train[FEATURES], df_train[LABEL])
