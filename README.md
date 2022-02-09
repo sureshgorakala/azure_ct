@@ -1,5 +1,6 @@
 # azure_ct
 
+
 In this repository, I  have created a workflow to create a CI/CD pipeline for :
 1. training a ML model
 2.  register model
@@ -25,4 +26,6 @@ Jobs Events:
     ---- to login to azure subcription, there are two ways:
     1. use service principle method (recommended)
     2. create secrets in settings of the repository for subscription/resourcegroup/workspace; while exectuting we need to login manually
+
+=======
 

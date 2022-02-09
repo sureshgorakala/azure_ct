@@ -30,7 +30,7 @@ jobs:
         WORKSPACE_NAME: ${{ secrets.WORKSPACE }}
       run: |
         python training/training_pipeline.py
-     
+
     - name: Deploy Scoring
       id: run_scoring
       env:
@@ -39,3 +39,6 @@ jobs:
         WORKSPACE_NAME: ${{ secrets.WORKSPACE }}
       run: |
         python scoring/aci_deploy.py
+
+     
+
