@@ -7,7 +7,7 @@ parser.add_argument("--model-name", dest="model_name", type=str)
 args = parser.parse_args()
 
 run = Run.get_context()
-workspace = run.experiment.workspace
+ws = run.experiment.workspace
 
 def register_models():
     register = True
