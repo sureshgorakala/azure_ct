@@ -14,7 +14,8 @@ def register_models():
     # get new model metrics
     new_model_metrics = run.parent.get_metrics()
     new_test_accuracy = new_model_metrics["test_metrics"]["accuracy"]
-    
+    print(f"model name: {args.model_name}")
+
     model_preexists = [model for model in Model.list(ws) if model.name==args.model_name]
     retraining = True if model_preexists else False
     
