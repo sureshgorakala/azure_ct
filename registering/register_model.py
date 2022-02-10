@@ -22,7 +22,7 @@ def register_models():
     if retraining:
         # get old model metrics
         old_model = Model(workspace=ws, name=args.model_name)
-        old_model_metrics = old_model.run.parent.get_metrics()
+        old_model_metrics = old_model.run.get_metrics()
         old_test_accuracy = old_model_metrics["test_metrics"]["accuracy"]
         print(f"accuracies: {old_test_accuracy}, {new_test_accuracy}")
         if new_test_accuracy <= old_model_accuracy:
