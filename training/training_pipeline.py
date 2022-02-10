@@ -26,7 +26,7 @@ prep_step = PythonScriptStep(name="prepare-data",
                                       "--train-out-folder", train_prepped_data,
                                       "--test-out-folder", test_prepped_data],
                         runconfig=run_config,
-                        allow_reuse=False)
+                        allow_reuse=True)
 train_step = PythonScriptStep(name="train-model",
                         source_directory="training/training_pipeline", 
                         script_name="train.py",
@@ -39,6 +39,7 @@ register_step = PythonScriptStep(name="register-model",
                         source_directory="registering", 
                         script_name="register_model.py",
                         compute_target="aml-cluster",
+                        arguments = ["--model-name", "wine-quality-lr"],
                         runconfig=run_config)
 
 step_sequence = StepSequence(steps=[prep_step, train_step, register_step])
