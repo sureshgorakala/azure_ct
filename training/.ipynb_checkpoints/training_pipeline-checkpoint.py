@@ -42,7 +42,7 @@ register_step = PythonScriptStep(name="register-model",
                         runconfig=run_config)
 
 
-pipeline_steps = Pipeline(workspace=ws, steps=[step1, step2, step3])
+pipeline_steps = Pipeline(workspace=ws, steps=[prep_step, train_step, register_step])
 experiment = Experiment(name="wine-quality-training", workspace=ws)
 run = experiment.submit(pipeline_steps)
 run.wait_for_completion(show_output=True)
