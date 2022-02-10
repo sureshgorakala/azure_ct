@@ -66,7 +66,8 @@ def train():
     os.makedirs("outputs", exist_ok=True)
     model_path = os.path.join("outputs", "model.pkl")
     save_as_pickle(path=model_path, obj=lr)
-    model = Model.register(workspace=WS, model_name="wine-quality-lr", 
+    run.upload_file("outputs/model.pkl", "outputs/model.pkl")
+    model = run.register_model(workspace=WS, model_name="wine-quality-lr", 
                    model_path=model_path,
                    description="lr model for wine quality",
                    tags = {"dataset": "wine_train"}

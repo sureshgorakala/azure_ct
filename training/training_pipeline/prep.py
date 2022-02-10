@@ -46,9 +46,8 @@ def prepare_data():
     
     os.makedirs("outputs", exist_ok=True)
     model_path = os.path.join("outputs", "scaler.pkl")
-    print(model_path)
-    print(f"current directory: {os.abspath(".")}")
     save_as_pickle(path=model_path, obj=scaler)
+    run.upload_file("outputs/scaler.pkl", "outputs/scaler.pkl")
     model = run.register_model(workspace=WS, model_name="wine-quality-scaler", 
                    model_path=model_path,
                    description="lr model for wine quality",
