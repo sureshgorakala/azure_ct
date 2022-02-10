@@ -60,18 +60,14 @@ def train():
                      "recall":recall,
                      "precision": precision}
     
-    run.log_table("train_metrics", train_metrics)
-    run.log_table("test_metrics", test_metrics)
+    run.parent.log_table("train_metrics", train_metrics)
+    run.parent.log_table("test_metrics", test_metrics)
     
     os.makedirs("outputs", exist_ok=True)
     model_path = os.path.join("outputs", "model.pkl")
     save_as_pickle(path=model_path, obj=lr)
-    run.upload_file("outputs/model.pkl", "outputs/model.pkl")
-    model = run.register_model(model_name="wine-quality-lr", 
-                   model_path=model_path,
-                   description="lr model for wine quality",
-                   tags = {"dataset": "wine_train"}
-                  )
+    run.parent.upload_file("outputs/model.pkl", "outputs/model.pkl")
+
 train()
 run.complete()
 
