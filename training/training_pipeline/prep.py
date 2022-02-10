@@ -43,9 +43,11 @@ def prepare_data():
     df_train.to_csv(train_save_path)
     test_save_path = os.path.join(args.test_out_folder, "wine-quality-test-prepped.csv")
     df_test.to_csv(test_save_path)
-
+    
     os.makedirs("outputs", exist_ok=True)
     model_path = os.path.join("outputs", "scaler.pkl")
+    print(model_path)
+    print(f"current directory: {os.abspath(".")}")
     save_as_pickle(path=model_path, obj=scaler)
     model = run.register_model(workspace=WS, model_name="wine-quality-scaler", 
                    model_path=model_path,
