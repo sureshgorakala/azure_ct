@@ -1,7 +1,7 @@
 import os
 from azureml.data import OutputFileDatasetConfig
 from azureml.pipeline.steps import PythonScriptStep
-from azureml.pipeline.core import Pipeline
+from azureml.pipeline.core import Pipeline, StepSequence
 from azureml.core import Workspace, Experiment, RunConfiguration
 from azureml.core.environment import CondaDependencies
 
@@ -41,8 +41,8 @@ register_step = PythonScriptStep(name="register-model",
                         compute_target="aml-cluster",
                         runconfig=run_config)
 
-
-pipeline_steps = Pipeline(workspace=ws, steps=[prep_step, train_step, register_step])
+step_sequence = StepSequence(steps=[prep_step, train_step, register_step])
+pipeline_steps = Pipeline(workspace=ws, steps=step_sequence)
 experiment = Experiment(name="wine-quality-training", workspace=ws)
 run = experiment.submit(pipeline_steps)
 run.wait_for_completion(show_output=True)
