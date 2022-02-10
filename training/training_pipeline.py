@@ -36,8 +36,8 @@ train_step = PythonScriptStep(name="train-model",
                         runconfig=run_config)
 
 register_step = PythonScriptStep(name="register-model",
-                        source_directory="registering/", 
-                        script_name="registering_model.py",
+                        source_directory="registering", 
+                        script_name="register_model.py",
                         compute_target="aml-cluster",
                         runconfig=run_config)
 
