@@ -25,7 +25,7 @@ def register_models():
         old_model_metrics = old_model.run.get_metrics()
         old_test_accuracy = old_model_metrics["test_metrics"]["accuracy"]
         print(f"accuracies: {old_test_accuracy}, {new_test_accuracy}")
-        if new_test_accuracy <= old_model_accuracy:
+        if new_test_accuracy <= old_test_accuracy:
             register=False
     
     if register:
