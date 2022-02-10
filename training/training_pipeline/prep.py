@@ -48,7 +48,7 @@ def prepare_data():
     model_path = os.path.join("outputs", "scaler.pkl")
     save_as_pickle(path=model_path, obj=scaler)
     run.upload_file("outputs/scaler.pkl", "outputs/scaler.pkl")
-    model = run.register_model(workspace=WS, model_name="wine-quality-scaler", 
+    model = run.register_model(model_name="wine-quality-scaler", 
                    model_path=model_path,
                    description="lr model for wine quality",
                    tags = {"dataset": "wine_train"}
