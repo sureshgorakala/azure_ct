@@ -46,7 +46,7 @@ def train():
     accuracy = accuracy_score(df_train[LABEL], train_pred_class)
     recall = recall_score(df_train[LABEL], train_pred_class)
     precision = precision_score(df_train[LABEL], train_pred_class)
-    train_metrics = {"accurracy": accuracy,
+    train_metrics = {"accuracy": accuracy,
                      "recall":recall,
                      "precision": precision}
     
@@ -56,7 +56,7 @@ def train():
     accuracy = accuracy_score(df_test[LABEL], test_pred_class)
     recall = recall_score(df_test[LABEL], test_pred_class)
     precision = precision_score(df_test[LABEL], test_pred_class)
-    test_metrics = {"accurracy": accuracy,
+    test_metrics = {"accuracy": accuracy,
                      "recall":recall,
                      "precision": precision}
     
