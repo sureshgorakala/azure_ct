@@ -55,3 +55,21 @@ pipeline_steps = Pipeline(workspace=ws, steps=step_sequence)
 experiment = Experiment(name="wine-quality-training", workspace=ws)
 run = experiment.submit(pipeline_steps)
 run.wait_for_completion(show_output=True)
+
+
+# Publish pipeline 
+published_pipeline = run.publish_pipeline(
+                             name="wine-quality-training-pipeline",
+                             description="Training pipeline for wine-quality-app",
+                             version="1.0")
+
+# Create schedule
+from azureml.pipeline.core import ScheduleRecurrence, Schedule
+minutely = ScheduleRecurrence(frequency='minute', interval=5)
+pipeline_schedule = Schedule.create(ws, name='continual training',
+                                        description='continual training wine app',
+                                        pipeline_id=published_pipeline.id,
+                                        experiment_name='wine-app-training-schedule',
+                                        recurrence=minutely)
+
+
