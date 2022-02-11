@@ -22,6 +22,11 @@ jobs:
       id: install_dependencies
       run: |
         python -m pip install azureml-core azureml-pipeline numpy pandas
+        
+    - name: Create Compute
+      id: create_compute
+      run: |
+        python compute/create_compute_target.py
 
     - name: Run Training
       id: run_training
@@ -35,6 +40,11 @@ jobs:
         
       run: |
         python training/training_pipeline.py
+        
+    - name: Delete Compute
+      id: delete_compute
+      run: |
+        python compute/delete_compute_target.py
 
     - name: Deploy Scoring
       id: run_scoring
@@ -48,6 +58,3 @@ jobs:
 
       run: |
         python scoring/aci_deploy.py
-
-     
-
