@@ -25,6 +25,13 @@ jobs:
         
     - name: Create Compute
       id: create_compute
+      env:
+        SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+        RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+        WORKSPACE_NAME: ${{ secrets.WORKSPACE }}
+        AML_TENANT_ID: ${{ secrets.AML_TENANT_ID }}
+        AML_PRINCIPAL_ID: ${{ secrets.AML_PRINCIPAL_ID }}
+        AML_PRINCIPAL_PASS: ${{ secrets.AML_PRINCIPAL_PASS }}
       run: |
         python compute/create_compute_target.py
 
@@ -37,12 +44,18 @@ jobs:
         AML_TENANT_ID: ${{ secrets.AML_TENANT_ID }}
         AML_PRINCIPAL_ID: ${{ secrets.AML_PRINCIPAL_ID }}
         AML_PRINCIPAL_PASS: ${{ secrets.AML_PRINCIPAL_PASS }}
-        
       run: |
         python training/training_pipeline.py
         
     - name: Delete Compute
       id: delete_compute
+      env:
+        SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
+        RESOURCE_GROUP: ${{ secrets.RESOURCE_GROUP }}
+        WORKSPACE_NAME: ${{ secrets.WORKSPACE }}
+        AML_TENANT_ID: ${{ secrets.AML_TENANT_ID }}
+        AML_PRINCIPAL_ID: ${{ secrets.AML_PRINCIPAL_ID }}
+        AML_PRINCIPAL_PASS: ${{ secrets.AML_PRINCIPAL_PASS }}
       run: |
         python compute/delete_compute_target.py
 
