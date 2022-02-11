@@ -65,7 +65,7 @@ published_pipeline = run.publish_pipeline(
 
 # Create schedule
 from azureml.pipeline.core import ScheduleRecurrence, Schedule
-minutely = ScheduleRecurrence(frequency='minute', interval=5)
+minutely = ScheduleRecurrence(frequency='Minute', interval=5)
 pipeline_schedule = Schedule.create(ws, name='continual training',
                                         description='continual training wine app',
                                         pipeline_id=published_pipeline.id,
