@@ -4,15 +4,23 @@ from azureml.pipeline.steps import PythonScriptStep
 from azureml.pipeline.core import Pipeline, StepSequence
 from azureml.core import Workspace, Experiment, RunConfiguration
 from azureml.core.environment import CondaDependencies
+from azureml.core.authentication import ServicePrincipalAuthentication
+
+sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
+                                    service_principal_id=os.environ['AML_PRINCIPAL_ID'],
+                                    service_principal_password=os.environ['AML_PRINCIPAL_PASS'])
+ws = Workspace.get(name=os.environ["WORKSPACE_NAME"],
+               subscription_id=os.environ["SUBSCRIPTION_ID"],
+               resource_group=os.environ["RESOURCE_GROUP"],
+               auth=sp)
+
 
 run_config = RunConfiguration()
 run_config.environment.python.conda_dependencies = CondaDependencies.create(python_version="3.8",
                                                                             pip_packages=["numpy", "pandas",
                                                                                           "scikit-learn", "azureml-core",
                                                                                           "azureml-defaults", "azureml-pipeline"])
-ws = Workspace.get(name=os.environ["WORKSPACE_NAME"],
-               subscription_id=os.environ["SUBSCRIPTION_ID"],
-               resource_group=os.environ["RESOURCE_GROUP"])
+
 
 train_prepped_data = OutputFileDatasetConfig("train_prepped")
 test_prepped_data = OutputFileDatasetConfig("test_prepped")
