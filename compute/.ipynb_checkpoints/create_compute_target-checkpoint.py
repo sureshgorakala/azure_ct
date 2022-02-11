@@ -1,4 +1,5 @@
 import os
+from azureml.core import Workspace
 from azureml.core.compute import ComputeTarget, AmlCompute
 from azureml.core.compute_target import ComputeTargetException
 from azureml.core.authentication import ServicePrincipalAuthentication
