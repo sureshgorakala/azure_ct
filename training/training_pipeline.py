@@ -56,7 +56,7 @@ experiment = Experiment(name="wine-quality-training", workspace=ws)
 run = experiment.submit(pipeline_steps)
 run.wait_for_completion(show_output=True)
 
-
+print("publish pipeline")
 # Publish pipeline 
 published_pipeline = run.publish_pipeline(
                              name="wine-quality-training-pipeline",
