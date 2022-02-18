@@ -41,7 +41,7 @@ def register_models():
                description="scaler model for wine quality",
                tags = {"dataset": "wine_train"}
               )
-        print("Model Registered...")
+        print("Model Registered....")
         
 
 register_models()
