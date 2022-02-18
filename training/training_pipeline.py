@@ -34,7 +34,7 @@ prep_step = PythonScriptStep(name="prepare-data",
                                       "--train-out-folder", train_prepped_data,
                                       "--test-out-folder", test_prepped_data],
                         runconfig=run_config,
-                        allow_reuse=True)
+                        allow_reuse=False)
 train_step = PythonScriptStep(name="train-model",
                         source_directory="training/training_pipeline", 
                         script_name="train.py",
