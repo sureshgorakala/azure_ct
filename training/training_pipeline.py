@@ -62,7 +62,7 @@ published_pipeline = run.publish_pipeline(
                              name="wine-quality-training-pipeline",
                              description="Training pipeline for wine-quality-app",
                              version="1.0")
-
+print("starting schedule")
 # Create schedule
 from azureml.pipeline.core import ScheduleRecurrence, Schedule
 minutely = ScheduleRecurrence(frequency='Minute', interval=5)
