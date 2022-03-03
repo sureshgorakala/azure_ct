@@ -32,6 +32,7 @@ jobs:
         AML_TENANT_ID: ${{ secrets.AML_TENANT_ID }}
         AML_PRINCIPAL_ID: ${{ secrets.AML_PRINCIPAL_ID }}
         AML_PRINCIPAL_PASS: ${{ secrets.AML_PRINCIPAL_PASS }}
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
       run: |
         python compute/create_compute_target.py
 
@@ -44,6 +45,7 @@ jobs:
         AML_TENANT_ID: ${{ secrets.AML_TENANT_ID }}
         AML_PRINCIPAL_ID: ${{ secrets.AML_PRINCIPAL_ID }}
         AML_PRINCIPAL_PASS: ${{ secrets.AML_PRINCIPAL_PASS }}
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
       run: |
         python training/training_pipeline.py
       
@@ -68,6 +70,7 @@ jobs:
         AML_TENANT_ID: ${{ secrets.AML_TENANT_ID }}
         AML_PRINCIPAL_ID: ${{ secrets.AML_PRINCIPAL_ID }}
         AML_PRINCIPAL_PASS: ${{ secrets.AML_PRINCIPAL_PASS }}
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
 
       run: |
         python scoring/aci_deploy.py
